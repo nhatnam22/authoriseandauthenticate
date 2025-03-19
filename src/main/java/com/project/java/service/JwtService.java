@@ -1,6 +1,6 @@
 package com.project.java.service;
 
-import persistences.entities.User;
+import com.project.java.persistences.entities.User;
 
 public interface JwtService {
 	String generateAccessToken(User user) throws Exception;

@@ -1,10 +1,11 @@
 package com.project.java.service.implement;
 
+
 import com.project.java.dto.user.UserDTO;
+import com.project.java.persistences.entities.User;
+import com.project.java.persistences.repositories.UserRepository;
 import com.project.java.service.UserService;
 
-import persistences.entities.User;
-import persistences.repositories.UserRepository;
 
 public class IUserService implements UserService{
 	private final UserRepository userRepository;

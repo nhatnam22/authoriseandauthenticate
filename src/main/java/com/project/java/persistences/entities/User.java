@@ -1,4 +1,4 @@
-package persistences.entities;
+package com.project.java.persistences.entities;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,6 +8,10 @@ import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,18 +48,27 @@ public class User implements UserDetails {
 	private String password;
 	
 	@OneToMany(mappedBy = "manager", fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private Set<SubSystem> subSystems;
 
 	@OneToMany(mappedBy = "manager", fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private Set<User> listUser = new HashSet<>();
 
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name = "manager_id")
 	private User manager;
 
 	@ManyToMany(fetch = FetchType.EAGER)
+	@JsonIgnore
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JsonIgnore
+	@JoinTable(name ="user_permission", joinColumns = @JoinColumn(name =" user_id"), inverseJoinColumns = @JoinColumn(name="permission_id"))
+	private Set<Permission> permissions = new HashSet<>();
 
 	public Long getId() {
 		return id;

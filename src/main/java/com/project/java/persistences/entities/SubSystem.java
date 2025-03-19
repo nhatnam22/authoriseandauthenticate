@@ -1,4 +1,6 @@
-package persistences.entities;
+package com.project.java.persistences.entities;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -29,5 +31,6 @@ public class SubSystem {
 	
 	@ManyToOne
 	@JoinColumn(name ="manager_id")
+	@JsonBackReference
 	private User manager;
 }

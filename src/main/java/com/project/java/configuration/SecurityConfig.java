@@ -10,11 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import lombok.RequiredArgsConstructor;
-import persistences.repositories.UserRepository;
+import com.project.java.persistences.repositories.UserRepository;
 
 @Configuration
-@RequiredArgsConstructor
 public class SecurityConfig {
 	private final UserRepository userRepository;
 

@@ -1,6 +1,7 @@
-package persistences.entities;
+package com.project.java.persistences.entities;
 
 import java.util.Set;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,5 +32,8 @@ public class Permission {
 	
 	@ManyToMany(mappedBy = "permissions")
 	private Set<Role> roles;
+	
+	@ManyToMany(mappedBy = "permissions")
+	private Set<User> users;
 	
 }

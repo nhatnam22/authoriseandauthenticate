@@ -12,17 +12,20 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.project.java.persistences.entities.User;
+import com.project.java.persistences.repositories.UserRepository;
 import com.project.java.service.implement.IJwtService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import persistences.entities.User;
-import persistences.repositories.UserRepository;
 
+
+@Component
 public class JwtFilterConfig extends OncePerRequestFilter{
 	private static final Logger logger = LoggerFactory.getLogger(JwtFilterConfig.class);
 	private final UserDetailsService userDetailsService;
